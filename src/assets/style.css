@@ -39,6 +39,10 @@ img.inspirer-avatar {
   border-radius: 60px;
 }
 
+div.inspirer-avatar {
+  margin-left: 7px !important;
+}
+
 img.user-avatar {
   width: 120px;
   height: 120px;
@@ -47,19 +51,19 @@ img.user-avatar {
 
 ul.inspirers {
   max-height: 200px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 div.feed {
   min-height: 450px;
   max-height: 450px;
-  overflow: scroll;
-  border-bottom: 1px dashed coral;
+  overflow: auto;
+  border-bottom: 1px dashed rgb(255, 127, 80);
   margin-bottom: 30px;
 }
 div.event {
   border-bottom: 1px solid #535353;
-  padding: 10px 5px;
+  padding: 10px 0;
 }
 span.inspirer-name {
   font-size: 22px;
@@ -69,6 +73,16 @@ span.inspirer-name {
 span.toggle-btn {
   font-size: 12px;
   font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color:  rgba(105, 105, 105, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(105, 105, 105, 0.5);
 }
 
 

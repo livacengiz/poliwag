@@ -26,7 +26,7 @@
           </div>
           <ul class="inspirers left">
             <li v-for="inspirer in filtredInspirers" v-bind:key="inspirer.id" class="left">
-              <input type="checkbox" :value="inspirer" :id="inspirer.id" v-model="selected"> - {{inspirer.login}}
+              <input type="checkbox" :value="inspirer" :id="inspirer.id" v-model="selected">- {{inspirer.login}}
             </li>
         </ul>
       </div>
