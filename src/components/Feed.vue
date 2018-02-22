@@ -45,6 +45,7 @@ export default {
       if (action === 'started') { return 'starred' }
       if (action === 'ForkEvent') { return 'forked' }
       if (action === 'CreateEvent') { return 'created' }
+      if (action === 'PublicEvent') { return 'published' }
     },
     generateRepoLink (repoName) {
       return 'https://github.com/' + repoName
@@ -59,7 +60,8 @@ export default {
         /* eslint-disable */
         this.mutableInspirer = res.data.filter((events) => { return events.type === 'CreateEvent' ||
                                                                     events.type === 'ForkEvent' ||
-                                                                    events.type === 'WatchEvent' })
+                                                                    events.type === 'WatchEvent' ||
+                                                                    events.type === 'PublicEvent' })
       })
       .catch(e => {
         this.errors.push(e)
