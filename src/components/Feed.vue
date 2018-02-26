@@ -5,7 +5,8 @@
     <div class="col-10 right"><span class="inspirer-name">{{inspirer.login}}'s Feed</span></div>
   </div>
     <div class="feed">
-      <div class="event row" v-for="events in mutableInspirer" v-bind:key="events.id">
+      <loading v-if="loading"></loading>
+      <div class="event row" v-for="events in mutableInspirer" v-bind:key="events.id" v-if="loading == false">
         <div class="col-1">
           <a :href=generateUserLink(events.actor.url) target="_blank">
             <img class="feed-avatar" :src=events.actor.avatar_url :alt=events.actor.login>
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import Loading from './Loading'
 import axios from 'axios'
 
 export default {
@@ -34,10 +36,14 @@ export default {
       required: true
     }
   },
+  components: {
+    Loading
+  },
   data () {
     return {
       mutableInspirer: [],
-      errors: []
+      errors: [],
+      loading: false
     }
   },
   methods: {
@@ -55,6 +61,7 @@ export default {
     }
   },
   beforeMount () {
+    this.loading = true
     axios.get(this.inspirer.received_events_url)
       .then(res => {
         /* eslint-disable */
@@ -62,6 +69,7 @@ export default {
                                                                     events.type === 'ForkEvent' ||
                                                                     events.type === 'WatchEvent' ||
                                                                     events.type === 'PublicEvent' })
+        this.loading = false
       })
       .catch(e => {
         this.errors.push(e)
