@@ -13,7 +13,10 @@
           <h4>You can see this repository on github | <a href="https://github.com/livacengiz/poliwag" target="_blank">Link</a></h4>
         </div>
       </div>
-      <div class="col-2 center" v-if="author.length !== 0">
+      <div class="col-2 center" v-if="loading == true">
+        <loading v-if="loading"></loading>
+      </div>
+      <div class="col-2 center" v-if="author.length !== 0 && loading == false">
         <h4><a :href=this.author.html_url target="_blank">{{this.author.login}}</a></h4>
         <img :src=this.author.avatar_url alt="Github profile picture" class="user-avatar">
           <h4><u>Inspirers {{this.author.following}}</u></h4>
@@ -35,6 +38,7 @@
 
 <script>
 import Session from './Session'
+import Loading from './Loading'
 import Feed from './Feed'
 import axios from 'axios'
 
@@ -50,7 +54,8 @@ export default {
   },
   components: {
     Feed,
-    Session
+    Session,
+    Loading
   },
   data () {
     return {
@@ -58,7 +63,8 @@ export default {
       inspirers: [],
       pagination: false,
       search: '',
-      errors: []
+      errors: [],
+      loading: false
     }
   },
   watch: {
@@ -105,11 +111,13 @@ export default {
       }
     },
     getInspirers () {
+      this.loading = true
       let url = INSPIRER_URL.replace(':author', this.author.login).replace(':CURRENT_PAGE', currentPage)
       axios.get(url)
         .then(res => {
           this.inspirers = res.data
           this.isPagination()
+          this.loading = false
         })
         .catch(e => {
           this.errors.push(e)

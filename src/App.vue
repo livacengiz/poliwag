@@ -3,7 +3,7 @@
     <header class="col-12">
       <div class="row">
         <div class="col-2 heading">
-          <img src="static/img/logo.png" alt="" class="logo"> <br /> <span class="app-name">Poliwag</span>
+          <img src="static/img/logo.png" alt="" class="logo"> <br /> <a href="https://github.com/livacengiz/poliwag" target="_blank" class="app-name">Poliwag</a>
         </div>
         <div class="col-8">
           <div class="main-search-wrapper">
@@ -40,7 +40,8 @@ export default {
       },
       authorName: '',
       themes: ['poliwag-day', 'poliwag-night'],
-      errors: []
+      errors: [],
+      loading: false
     }
   },
   components: {
