@@ -19,7 +19,6 @@
         <inspirers :author=session.author></inspirers>
     </div>
 </div>
-
 </template>
 
 <script>
@@ -40,8 +39,7 @@ export default {
       },
       authorName: '',
       themes: ['poliwag-day', 'poliwag-night'],
-      errors: [],
-      loading: false
+      errors: []
     }
   },
   components: {

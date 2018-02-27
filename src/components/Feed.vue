@@ -6,7 +6,7 @@
   </div>
     <div class="feed">
       <loading v-if="loading"></loading>
-      <div class="event row" v-for="events in mutableInspirer" v-bind:key="events.id" v-if="loading == false">
+      <div class="event row" v-for="events in mutableInspirer" v-bind:key="events.id" v-if="!loading">
         <div class="col-1">
           <a :href=generateUserLink(events.actor.url) target="_blank">
             <img class="feed-avatar" :src=events.actor.avatar_url :alt=events.actor.login>

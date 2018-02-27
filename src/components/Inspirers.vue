@@ -13,10 +13,10 @@
           <h4>You can see this repository on github | <a href="https://github.com/livacengiz/poliwag" target="_blank">Link</a></h4>
         </div>
       </div>
-      <div class="col-2 center" v-if="loading == true">
+      <div class="col-2 center" v-if="loading">
         <loading v-if="loading"></loading>
       </div>
-      <div class="col-2 center" v-if="author.length !== 0 && loading == false">
+      <div class="col-2 center" v-if="author.length !== 0 && !loading">
         <h4><a :href=this.author.html_url target="_blank">{{this.author.login}}</a></h4>
         <img :src=this.author.avatar_url alt="Github profile picture" class="user-avatar">
           <h4><u>Inspirers {{this.author.following}}</u></h4>
