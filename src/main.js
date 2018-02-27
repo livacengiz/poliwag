@@ -9,8 +9,13 @@ import './assets/logo.png'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  components: { App },
-  template: '<App/>'
-})
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  document.getElementById('mobileSupport').style.display = 'block'
+} else {
+  new Vue({
+    el: '#app',
+    components: { App },
+    template: '<App/>'
+  })
+}
