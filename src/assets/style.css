@@ -1,9 +1,3 @@
-
-#app {
-  width: 100%;
-  height: 100%;
-}
-
 .hand {
   cursor: pointer;
 }
@@ -176,6 +170,10 @@ body {
     color: #ebebeb !important;
   }
 
+  #mobileSupport {
+    display: none;
+  }
+
 
 /* ROOT FONT STYLES */
 
@@ -252,6 +250,14 @@ p {
 
 .justify {
   text-align: justify;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 
 /* ==== GRID SYSTEM ==== */
